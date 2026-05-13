@@ -7,7 +7,6 @@ import './mod/nick';
 import './mod/chat';
 import './mod/jumpresethud';
 
-import './dep/testing';
 import './dep/update';
 
 const metadata = JSON.parse(FileLib.read('Catti', 'metadata.json'));
