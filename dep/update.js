@@ -10,11 +10,11 @@ const JavaArray = Java.type("java.lang.reflect.Array");
 function check_to_update() {
   new Thread(() => {
     try {
-      let remoteMetaRaw = FileLib.getUrlContent("https://raw.githubusercontent.com/latrosie/catti-ct/main/metadata.json");
-      let remoteMeta = JSON.parse(remoteMetaRaw);
-      let remoteVersion = remoteMeta.version;
+      const remoteMetaRaw = FileLib.getUrlContent("https://raw.githubusercontent.com/latrosie/catti-ct/main/metadata.json");
+      const remoteVersion = JSON.parse(remoteMetaRaw).version;
 
-      if (remoteVersion !== JSON.parse(FileLib.read('Catti', "metadata.json")).version) {
+      const localVersion = JSON.parse(FileLib.read('Catti', "metadata.json")).version;
+      if (remoteVersion !== localVersion) {
         ChatLib.chat(`&6[Updater] &aNew version found: &v${remoteVersion} &7(Current: ${localVersion})`);
         update_module();
       } else {
