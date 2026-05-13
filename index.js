@@ -1,5 +1,8 @@
-export const config = JSON.parse(FileLib.read('Catti', 'config.jsonc').replace(/\/\/.*$/gm,''));
-console.log(config);
+export function parseJSONC(obj) { return JSON.parse(FileLib.read('Catti', 'config.jsonc').replace(/\/\/.*$/gm,'')); }
+
+import { fakepixel as got_server_config } from './dat/server_config';
+export const config = JSON.parse(FileLib.read('Catti', 'dat/config.json'));
+export const server_config = got_server_config;
 
 import './mod/self_chat_bot';
 import './dep/tablist';

@@ -27,7 +27,6 @@ register('messageSent', (msg, e) => {
   e.setCanceled(true);
 
   if (msg.startsWith('!!') && whereami().startsWith('bw-')) { ChatLib.command('shout ' + msg); return }
-  if (msg.startsWith('!')) { ChatLib.say(msg.substring(1)); return }
 
   // msg = replaceEmojis(msg);
 

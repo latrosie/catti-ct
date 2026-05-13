@@ -12,7 +12,7 @@ register("step", () => {
 }).setFps(3);
 
 register("messageSent", (msg, e) => {
-    if (msg.startsWith("/")) return;
+    if (!msg.startsWith("/")) return;
 
     e.setCanceled(true);
     cmdq.push(msg.substring(1));

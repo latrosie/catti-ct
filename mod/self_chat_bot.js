@@ -1,12 +1,8 @@
 // import { Party } from "../dep/party_with_friends";
 import whereami from "../dep/tablist";
+import { server_config } from "..";
 
-// Fakepixel
-const partyRegex = /^Party > (?:\[[^\]]+?\] )?(\w{3,16}): ;(.+)$/;
-// Agerapvp
-// const partyRegex = /^Party chat \(\/pc\) ▶ (?:\[[^\]]+?\] )?(\w{3,16}): ;(.+)$/;
-// Minemen
-// const partyRegex = 
+const partyRegex = server_config.regex.party;
 
 // party regex
 register('chat', (ign, cmd) => {
