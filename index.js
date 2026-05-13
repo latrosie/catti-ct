@@ -4,12 +4,11 @@ console.log(config);
 import './mod/self_chat_bot';
 import './dep/tablist';
 import './mod/nick';
-// import './mod/chat';
+import './mod/chat';
 import './mod/jumpresethud';
 
 import './dep/testing';
-// import './dep/utils';
-// import './dep/brownout';
+import './dep/update';
 
 const metadata = JSON.parse(FileLib.read('Catti', 'metadata.json'));
 register('command', () => {

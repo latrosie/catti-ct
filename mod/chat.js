@@ -22,25 +22,24 @@ register('messageSent', (msg, e) => {
   //   return;
   // }
 
-  if(msg.startsWith('/') || chatChannel == 'a') return;
+  if (msg.startsWith('/') || chatChannel == 'a') return;
 
   e.setCanceled(true);
 
-  if(msg.startsWith('!!') && whereami().startsWith('bw-')) { ChatLib.command('shout ' + msg); return }
-  if(msg.startsWith('!')) { ChatLib.say(msg.slice(1)); return }
+  if (msg.startsWith('!!') && whereami().startsWith('bw-')) { ChatLib.command('shout ' + msg); return }
+  if (msg.startsWith('!')) { ChatLib.say(msg.substring(1)); return }
 
-  msg = replaceEmojis(msg);
-	
+  // msg = replaceEmojis(msg);
+
   // channels
-  switch(chatChannel) {
+  switch (chatChannel) {
     case 'p':
-      ChatLib.command('pc ' + msg);
       break;
     case 'w':
       ChatLib.command(`w ${whisperingTo} ${msg}`);
       break;
     case 'S':
-      if(whereami().startsWith('bw-')) ChatLib.command('shout ' + msg);
+      if (whereami().startsWith('bw-')) ChatLib.command('shout ' + msg);
       else ChatLib.say(msg);
       break;
     // case 'a':
@@ -50,40 +49,44 @@ register('messageSent', (msg, e) => {
 })
 
 register('command', (channel, whisTo) => {
-  if(!channel) {
+  if (!channel) {
     // too lazy to do anything else
     ChatLib.chat('&7Current chat channel: &r' + (chatChannel == 'w' ? `whisper (${whisperingTo})` : chatChannel == 'a' ? 'all' : channel == 'p' ? 'party' : 'SHOUT'));
     return;
   }
 
-  switch(channel) {
+  switch (channel) {
     case 'a':
     case 'all':
+      if (chatChannel === 'p') ChatLib.command('chat a');
       chatChannel = 'a';
       ChatLib.chat('&7Switched to chat channel: &rall');
       break;
     case 'p':
     case 'party':
+      if (chatChannel !== 'p') ChatLib.command('chat p');
       chatChannel = 'p';
       ChatLib.chat('&7Switched to chat channel: &rparty');
       break;
     case 'w': case 'm':
     case 'msg':
-      if(!whisTo) {
+      if (!whisTo) {
         ChatLib.chat('&cSpecify who to whisper to. /chat msg <player>');
         return;
       }
 
+      if (chatChannel === 'p') ChatLib.command('chat a');
       chatChannel = 'w';
       whisperingTo = whisTo;
       ChatLib.chat(`&7Switched to chat channel: &rmsg (${whisperingTo})`);
       break;
     case 'S': case 's':
     case 'shout':
+      if (chatChannel === 'p') ChatLib.command('chat a');
       chatChannel = 's'
       ChatLib.chat('&7Switched to chat channel: &rSHOUT');
       break;
     default:
       ChatLib.chat('&cInvalid channel. (all,party,msg,shout)');
   }
-}).setTabCompletions('all','party','msg','shout').setName('chat', true);
+}).setTabCompletions('all', 'party', 'msg', 'shout').setName('chat', true);
