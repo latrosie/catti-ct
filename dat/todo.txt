@@ -1,0 +1,11 @@
+party_with_friends%
+server_detect%
+denicker
+chat_channels
+declutter_chat
+nick_helper
+command_queue%
+drpc%
+self_chat_bot party alpha
+update%
+settings_gui%

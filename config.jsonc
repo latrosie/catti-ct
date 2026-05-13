@@ -1,0 +1,64 @@
+{
+  // CHAT
+  "chat": {
+    // Replace :emojis: in chat
+    "emojis": false,
+
+    // Custom client-side chat channels (extra features)
+    "channels": true
+  },
+
+  // NICK
+  "nick": {
+    // Custom client-side nick helper (extra features)
+    "helper": true,
+
+    "DENICK": {
+      // Since this utilizes an exploit some servers don't like, you might wanna disable it
+      "enable": true,
+
+      // Connect to online nick DB
+      "online": false,
+      "dbaddr": "ded0.catrophie.nya.je/fpdenick",
+      "dbcache": true, // Cache results in local db
+
+      // Automatically denick the lobby/game once you join (/denicklobby)
+      "auto_denicklobby": false,
+
+      // Automatically sync pending denicks once you join a lobby (/denick .sync)
+      "auto_syncdenick": false
+    }
+  },
+
+  // SELF CHAT BOT
+  "self_chat_bot": {
+    // true - all, "f" - friends only, false - disabled (applies to the commands too)
+    "enable": true,
+
+    "party": {
+      "enable": true,
+      "regex": "",
+
+      // Toggle individual commands
+      
+      "warp": true,
+      "ptme": true,
+      "inv": true,
+
+      "stats": true,
+      "ping": true,
+      "denick": true
+    },
+
+    "whisper": {
+      "enable": false,
+      "regex": "",
+
+      "invme": true,
+
+      "ping": true,
+      "stats": false,
+      "denick": true
+    }
+  }
+}
