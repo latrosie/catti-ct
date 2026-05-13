@@ -54,7 +54,10 @@ function update_module() {
         targetFile.getParentFile().mkdirs();
 
         let outStream = new FileOutputStream(targetFile);
-        let buffer = Array.newInstance(Byte.TYPE, 4096);
+
+        // NO COLLISION: Using the full path directly
+        let buffer = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 4096);
+
         let len;
         while ((len = zipStream.read(buffer)) > 0) {
           outStream.write(buffer, 0, len);
